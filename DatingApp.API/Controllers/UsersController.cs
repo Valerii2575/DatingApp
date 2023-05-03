@@ -1,24 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using DatingApp.API.Data;
 using DatingApp.API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace DatingApp.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsersController : Controller
+    public class UsersController : BaseApiController
     {
         private readonly ILogger<UsersController> _logger;
         private readonly DataContext _context;
 
-        public UsersController(ILogger<UsersController> logger, DataContext context)
+        public UsersController(ILogger<UsersController> logger, DataContext context) : base(logger)
         {
             _logger = logger;
             _context = context;
