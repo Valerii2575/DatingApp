@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DatingApp.API.ViewModel
+namespace DatingApp.API.DTOs
 {
-    public class AppUserRequest
+    public class UserDto
     {
         public string UserName { get; set; }
-        public string UserPassword { get;set; }
+        public string Token { get; set; }
     }
 }
