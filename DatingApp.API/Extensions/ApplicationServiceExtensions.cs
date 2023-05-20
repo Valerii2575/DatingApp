@@ -15,12 +15,16 @@ namespace DatingApp.API.Extensions
 
             services.AddCors();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             return services;
         }
 
         public static IServiceCollection AddDependencyInjections(this IServiceCollection services)
         {
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
             return services;
         }
     }
