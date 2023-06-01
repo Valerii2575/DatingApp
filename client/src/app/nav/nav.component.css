@@ -6,3 +6,9 @@
 .dropdown-toggle {
     color: #fff;
 }
+
+img {
+    max-height: 50px;
+    border: 2px solid #fff;
+    display: inline;
+}

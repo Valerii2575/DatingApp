@@ -21,6 +21,8 @@ import { MemberCatdComponent } from './members/member-catd/member-catd.component
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { SharedModule } from './_modules/shared.module';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
     MessagesComponent,
     TestErrorComponent,
     MemberCatdComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    PhotoEditorComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -46,7 +49,8 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
     BsDropdownModule.forRoot()
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

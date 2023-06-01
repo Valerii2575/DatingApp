@@ -44,14 +44,17 @@ namespace DatingApp.API.Controllers
 
             return new UserDto{
                 UserName = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url
             };
         } 
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login([FromBody] LoginRequest userRequest)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == userRequest.UserName);
+            var user = await _context.Users
+                                .Include(x => x.Photos)
+                                .SingleOrDefaultAsync(x => x.UserName == userRequest.UserName);
             if(user == null){
                 return Unauthorized();
             }
@@ -69,7 +72,8 @@ namespace DatingApp.API.Controllers
 
             return new UserDto{
                 UserName = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain).Url
             };
         }
 
