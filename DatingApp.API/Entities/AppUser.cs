@@ -1,16 +1,9 @@
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using Microsoft.JSInterop.Infrastructure;
+using Microsoft.AspNetCore.Identity;
 
 namespace DatingApp.API.Entities
 {
-    public class AppUser
+    public class AppUser : IdentityUser<int>
     {
-        public int Id { get; set; } 
-        public string UserName { get; set; }
-        public byte[] PasswordHash { get;set; }
-        public byte[] PasswordSalt { get; set; }
         public DateOnly DateOfBithday { get; set; }
         public string KnownAs { get; set; }
         public DateTime Created { get; set; } = DateTime.UtcNow;
@@ -22,6 +15,8 @@ namespace DatingApp.API.Entities
         public string City { get; set; }
         public string Country { get; set; }
         public List<Photo> Photos { get; set; } = new();
+
+        public ICollection<AppUserRole> UserRoles { get; set; }  
 
         public int GetAge()
         {
