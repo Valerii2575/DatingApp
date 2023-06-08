@@ -66,7 +66,7 @@ namespace DatingApp.API.Controllers
             return new UserDto{
                 UserName = user.UserName,
                 Token = token,
-                //PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain).Url
+                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain).Url
             };
         }
 

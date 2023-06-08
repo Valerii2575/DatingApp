@@ -23,6 +23,9 @@ import { SharedModule } from './_modules/shared.module';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_directives/has-role.directive';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     TestErrorComponent,
     MemberCatdComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    AdminPanelComponent,
+    HasRoleDirective,
+    UserManagementComponent
   ],
   imports: [
     BrowserAnimationsModule,
